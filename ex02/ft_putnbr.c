@@ -6,7 +6,7 @@
 /*   By: tblanco <tblanco@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 15:08:32 by tblanco           #+#    #+#             */
-/*   Updated: 2021/02/16 15:09:59 by tblanco          ###   ########.fr       */
+/*   Updated: 2021/02/17 06:55:40 by tblanco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,38 @@
 ** 		ft_putnbr(42) affiche "42"
 */
 
-void ft_putnbr(int nb)
-{
+#include <unistd.h>
 
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
 }
 
+void ft_putnbr(int nb)
+{
+	long nb_long;
+
+	nb_long = nb;	
+	if(nb_long < 0)
+	{
+		ft_putchar('-');
+		nb_long = -nb_long;
+	}
+	if (nb_long > 9)
+	{
+		ft_putnbr(nb_long / 10);
+		ft_putnbr(nb_long % 10);
+	}
+	else
+		ft_putchar(nb + '0');
+}
+
+#include <limits.h>
 int main()
 {
-	
+	ft_putnbr(42);
+	ft_putchar('\n');
+	ft_putnbr(INT_MAX);
+	ft_putchar('\n');
+	ft_putnbr(INT_MIN);
 }
