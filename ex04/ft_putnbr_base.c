@@ -6,7 +6,7 @@
 /*   By: tblanco <tblanco@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 15:15:10 by tblanco           #+#    #+#             */
-/*   Updated: 2021/02/17 09:23:21 by tblanco          ###   ########.fr       */
+/*   Updated: 2021/02/17 09:42:41 by tblanco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,51 +68,30 @@ void	ft_putnbr(int nb)
 		ft_putchar(nb + '0');
 }
 
-void	dec_to_bin(int nb)
-{
-	if(nb > 1)
-	{
-			dec_to_bin(nb / 2);
-			dec_to_bin(nb % 2);
-	}
-	else
-	{
-		if(nb == 1)
-			ft_putchar('0');
-		else
-			ft_putchar('1');
-	}
-}
-
-void	dec_to_oct(int nb)
-{
-	
-}
-
-void	dec_to_hex(int nb)
-{
-	
-}
-
 void	ft_putnbr_base(int nbr, char *base)
 {
-	char	len;
+	int	len;
 
 	len = ft_strlen(base);
-	if (len <= 2)
-		dec_to_bin(nbr);
-	else if (len <= 8)
-		dec_to_oct(nbr);
-	else if (len <= 10)
-		ft_putnbr(nbr);
+	if (nbr >= len)
+	{		
+		ft_putnbr_base(nbr / len, base);
+		ft_putnbr_base(nbr % len, base);
+	}
 	else
-		dec_to_hex(nbr);
+		ft_putchar(base[nbr]);
 }
 
 int		main()
 {
-	// ft_putnbr_base(42, "0123456789");
-	ft_putnbr_base(75, "01");
-	// ft_putnbr_base(42, "0123456789ABCDEF");
-	// ft_putnbr_base(42, "poneyvif");
+	int nb = 58672353;
+	
+	ft_putnbr_base(nb, "0123456789");
+	ft_putchar('\n');
+	ft_putnbr_base(nb, "01");
+	ft_putchar('\n');
+	ft_putnbr_base(nb, "0123456789ABCDEF");
+	ft_putchar('\n');
+	ft_putnbr_base(nb, "poneyvif");
+	ft_putchar('\n');
 }
