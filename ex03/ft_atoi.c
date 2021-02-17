@@ -6,7 +6,7 @@
 /*   By: tblanco <tblanco@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 15:10:17 by tblanco           #+#    #+#             */
-/*   Updated: 2021/02/16 15:14:30 by tblanco          ###   ########.fr       */
+/*   Updated: 2021/02/17 08:49:11 by tblanco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,65 @@
 **		-1234
 */
 
-int ft_atoi(char *str)
-{
+/*
+** > white space = '', '\n, '\t', '\v', '\f', '\r'
+**
+*/
 
+int	convert_to_number(char *str_nb)
+{
+	int pow;
+	int nb;
+
+	pow = 1;
+	nb = 0;
+	while (*--str_nb >= '0' && *str_nb <= '9')
+	{
+		nb += ((*str_nb - '0') * pow);
+		pow *= 10;
+	}
+	return (nb);
 }
+
+int	ft_atoi(char *str)
+{
+	int i;
+	int neg_pos;
+	int len_nb;
+	
+	i = 0;
+	neg_pos = 1;
+	len_nb = 0;
+	while (str[i] && ((str[i] >= '\t' && str[i] <= '\r')|| str[i] == ' '))
+		i++; 
+	while (str[i] && (str[i] == '+' || str[i] == '-'))
+	{
+		if (str[i] == '-')
+			neg_pos = -1;
+		i++;
+	}
+	i--;
+	while (str[++i] && (str[i] >= '0' && str[i] <= '9'))
+		len_nb++;
+	
+	return (convert_to_number(&str[i]) * neg_pos);
+}
+
+
+#include <stdio.h>
 
 int	main()
 {
-	
+	printf("%d\n",ft_atoi(" ---+--+1234ab567"));
+	printf("%d\n",ft_atoi(" \n\t\f\v\r---+--+1234ab567"));
+	printf("%d\n",ft_atoi(" -- -+--+1234ab567"));
+	printf("%d\n",ft_atoi(" ---+--+ 1234ab567"));
+	printf("%d\n",ft_atoi(" ---+--+9234ab567"));
+	printf("%d\n",ft_atoi(" ---+--+0234ab567"));
+	printf("%d\n",ft_atoi(" ---+--+1239ab567"));
+	printf("%d\n",ft_atoi(" ---+--+1230ab567"));
+	printf("%d\n",ft_atoi(" ---+--+0000001230ab567"));
+	printf("%d\n",ft_atoi(" ---+--+123000000ab567"));
+	printf("%d\n",ft_atoi(" ---D+--+1234ab567"));
+	return 0;
 }
