@@ -6,7 +6,7 @@
 /*   By: tblanco <tblanco@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 15:15:10 by tblanco           #+#    #+#             */
-/*   Updated: 2021/02/17 09:42:41 by tblanco          ###   ########.fr       */
+/*   Updated: 2021/02/18 14:35:47 by tblanco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	ft_putchar(char c)
 	write(1, &c, 1);
 }
 
+/*
 void	ft_putnbr(int nb)
 {
 	long nb_long;
@@ -67,24 +68,32 @@ void	ft_putnbr(int nb)
 	else
 		ft_putchar(nb + '0');
 }
+*/
 
 void	ft_putnbr_base(int nbr, char *base)
 {
 	int	len;
-
+	long nbr_lg;
+	
 	len = ft_strlen(base);
-	if (nbr >= len)
+	nbr_lg =  nbr;
+	if (nbr_lg < 0)
+	{
+		nbr_lg = -nbr_lg;
+		ft_putchar('-');
+	}
+	if (nbr_lg >= len)
 	{		
-		ft_putnbr_base(nbr / len, base);
-		ft_putnbr_base(nbr % len, base);
+		ft_putnbr_base(nbr_lg / len, base);
+		ft_putnbr_base(nbr_lg  % len, base);
 	}
 	else
-		ft_putchar(base[nbr]);
+		ft_putchar(base[nbr_lg]);
 }
 
 int		main()
 {
-	int nb = 58672353;
+	int nb = -2147483648;
 	
 	ft_putnbr_base(nb, "0123456789");
 	ft_putchar('\n');
