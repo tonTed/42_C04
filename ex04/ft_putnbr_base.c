@@ -6,7 +6,7 @@
 /*   By: tblanco <tblanco@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 15:15:10 by tblanco           #+#    #+#             */
-/*   Updated: 2021/02/18 14:35:47 by tblanco          ###   ########.fr       */
+/*   Updated: 2021/02/19 11:08:41 by tblanco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,27 +49,6 @@ void	ft_putchar(char c)
 	write(1, &c, 1);
 }
 
-/*
-void	ft_putnbr(int nb)
-{
-	long nb_long;
-
-	nb_long = nb;	
-	if(nb_long < 0)
-	{
-		ft_putchar('-');
-		nb_long = -nb_long;
-	}
-	if (nb_long > 9)
-	{
-		ft_putnbr(nb_long / 10);
-		ft_putnbr(nb_long % 10);
-	}
-	else
-		ft_putchar(nb + '0');
-}
-*/
-
 void	ft_putnbr_base(int nbr, char *base)
 {
 	int	len;
@@ -93,7 +72,7 @@ void	ft_putnbr_base(int nbr, char *base)
 
 int		main()
 {
-	int nb = -2147483648;
+	int nb = 42;
 	
 	ft_putnbr_base(nb, "0123456789");
 	ft_putchar('\n');
