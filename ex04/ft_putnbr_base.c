@@ -6,7 +6,7 @@
 /*   By: tblanco <tblanco@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 15:15:10 by tblanco           #+#    #+#             */
-/*   Updated: 2021/02/22 12:52:22 by tblanco          ###   ########.fr       */
+/*   Updated: 2021/02/22 12:53:26 by tblanco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,3 @@ void	ft_putnbr_base(int nbr, char *base)
 			ft_putchar(base[nbr_lg]);
 	}
 }
-
-
