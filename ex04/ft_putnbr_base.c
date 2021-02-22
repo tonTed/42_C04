@@ -6,7 +6,7 @@
 /*   By: tblanco <tblanco@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 15:15:10 by tblanco           #+#    #+#             */
-/*   Updated: 2021/02/22 11:35:25 by tblanco          ###   ########.fr       */
+/*   Updated: 2021/02/22 12:52:22 by tblanco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,16 @@
 
 #include <unistd.h>
 
+#include <stdio.h>
+
 void	ft_putchar(char c)
 {
 	write(1, &c, 1);
 }
 
-int		ft_strlen(char *str)
+long	ft_strlen(char *str)
 {
-	int len;
+	long len;
 
 	len = 0;
 	while (*str++)
@@ -66,12 +68,12 @@ int		bad_base(char *base)
 
 void	ft_putnbr_base(int nbr, char *base)
 {
-	int		len;
+	long	len;
 	long	nbr_lg;
 
-	if (bad_base(base))
+	len = ft_strlen(base);
+	if (bad_base(base) && len > 1)
 	{
-		len = ft_strlen(base);
 		nbr_lg = nbr;
 		if (nbr_lg < 0)
 		{
@@ -87,3 +89,5 @@ void	ft_putnbr_base(int nbr, char *base)
 			ft_putchar(base[nbr_lg]);
 	}
 }
+
+
