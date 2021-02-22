@@ -6,7 +6,7 @@
 /*   By: tblanco <tblanco@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 15:15:10 by tblanco           #+#    #+#             */
-/*   Updated: 2021/02/22 10:11:29 by tblanco          ###   ########.fr       */
+/*   Updated: 2021/02/22 11:33:51 by tblanco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,7 @@ int		main()
 	ft_putnbr_base(nb, "poneyvif");
 	ft_putchar('\n');
 	ft_putnbr_base(nb, "teddy");
+	ft_putchar('\n');
+	ft_putnbr_base(nb, " +0123456789ABCDEF");
 	ft_putchar('\n');
 }

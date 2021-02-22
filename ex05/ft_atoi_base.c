@@ -6,7 +6,7 @@
 /*   By: tblanco <tblanco@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 15:19:55 by tblanco           #+#    #+#             */
-/*   Updated: 2021/02/22 10:06:24 by tblanco          ###   ########.fr       */
+/*   Updated: 2021/02/22 11:37:16 by tblanco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,10 @@ int		bad_base(char *base)
 	int		j;
 
 	i = -1;
-	while (base[++i] != '\0' && base[i] > ' ' && base[i] != '+'
-			&& base[i] != '-')
+	while (base[++i] != '\0')
 	{
+		if (base[i] <= ' ' || base[i] == '+' || base[i] == '-')
+			return (0);
 		j = i;
 		while (base[++j] != '\0')
 			if (base[i] == base[j])
