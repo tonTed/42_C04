@@ -6,7 +6,7 @@
 /*   By: tblanco <tblanco@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 15:15:10 by tblanco           #+#    #+#             */
-/*   Updated: 2021/02/19 11:08:41 by tblanco          ###   ########.fr       */
+/*   Updated: 2021/02/22 09:32:05 by tblanco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,50 +29,73 @@
 **		base contient les caractères + ou -.
 */
 
-
+#include <unistd.h>
 #include <stdio.h>
 
-#include <unistd.h>
+void	ft_putchar(char c);
+int		ft_strlen(char *str);
+int		bad_base(char *base);
+void	ft_putnbr_base(int nbr, char *base);
 
-int		ft_strlen(char *str)
-{
-	int len;
-
-	len = 0;
-	while(*str++)
-		len++;
-	return (len);
-}
 
 void	ft_putchar(char c)
 {
 	write(1, &c, 1);
 }
 
+int		ft_strlen(char *str)
+{
+	int len;
+
+	len = 0;
+	while (*str++)
+		len++;
+	return (len);
+}
+
+int		bad_base(char *base)
+{
+	int		i;
+	int		j;
+
+	i = -1;
+	while (base[++i] != '\0' && base[i] > ' ' && base[i] != '+' && base[i] != '-')
+	{
+		j = i;
+		while (base[++j] != '\0')
+			if (base[i] == base[j])
+				return(0);
+	}
+	return (1);
+}
+
 void	ft_putnbr_base(int nbr, char *base)
 {
-	int	len;
-	long nbr_lg;
-	
-	len = ft_strlen(base);
-	nbr_lg =  nbr;
-	if (nbr_lg < 0)
+	int		len;
+	long	nbr_lg;
+
+	if (bad_base(base))
 	{
-		nbr_lg = -nbr_lg;
-		ft_putchar('-');
+		len = ft_strlen(base);
+		nbr_lg = nbr;
+		if (nbr_lg < 0)
+		{
+			nbr_lg = -nbr_lg;
+			ft_putchar('-');
+		}
+		if (nbr_lg >= len)
+		{
+			ft_putnbr_base(nbr_lg / len, base);
+			ft_putnbr_base(nbr_lg % len, base);
+		}
+		else
+			ft_putchar(base[nbr_lg]);
 	}
-	if (nbr_lg >= len)
-	{		
-		ft_putnbr_base(nbr_lg / len, base);
-		ft_putnbr_base(nbr_lg  % len, base);
-	}
-	else
-		ft_putchar(base[nbr_lg]);
 }
 
 int		main()
 {
-	int nb = 42;
+	int nb = -2147483648;
 	
 	ft_putnbr_base(nb, "0123456789");
 	ft_putchar('\n');
@@ -81,5 +104,7 @@ int		main()
 	ft_putnbr_base(nb, "0123456789ABCDEF");
 	ft_putchar('\n');
 	ft_putnbr_base(nb, "poneyvif");
+	ft_putchar('\n');
+	ft_putnbr_base(nb, "teddy");
 	ft_putchar('\n');
 }
