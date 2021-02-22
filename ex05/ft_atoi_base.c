@@ -6,7 +6,7 @@
 /*   By: tblanco <tblanco@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 15:19:55 by tblanco           #+#    #+#             */
-/*   Updated: 2021/02/22 10:03:16 by tblanco          ###   ########.fr       */
+/*   Updated: 2021/02/22 10:06:24 by tblanco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@
 ** 		la base contient deux fois le même caractère ;
 ** 		la base contient les caractères + ou - ou des whitespaces ;
 */
-
-#include <stdio.h>
 
 long	ft_strlen(char *str)
 {

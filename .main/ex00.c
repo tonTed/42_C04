@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ex00.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tblanco <tblanco@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 15:03:31 by tblanco           #+#    #+#             */
-/*   Updated: 2021/02/17 06:24:03 by tblanco          ###   ########.fr       */
+/*   Updated: 2021/02/22 10:12:34 by tblanco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,11 @@
 ** caractères et qui retourne le nombre trouvé.
 */
 
-
-int	ft_strlen(char *str)
-{
-	int len;
-
-	len = 0;
-	while(*str++)
-		len++;
-	return (len);
-}
-
-
 #include <stdio.h>
 #include <string.h>
+
+#include "../ex00/ft_strlen.c"
+
 int	main()
 {
 	// TEST_1

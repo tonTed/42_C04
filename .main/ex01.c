@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ex01.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tblanco <tblanco@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 15:06:44 by tblanco           #+#    #+#             */
-/*   Updated: 2021/02/17 06:41:40 by tblanco          ###   ########.fr       */
+/*   Updated: 2021/02/22 10:12:49 by tblanco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,11 @@
 ** pointeur passé en paramètre à la fonction.
 */
 
-#include <unistd.h>
-
-int	ft_strlen(char *str)
-{
-	int len;
-
-	len = 0;
-	while(*str++)
-		len++;
-	return (len);
-}
-
-void ft_putstr(char *str)
-{
-	write(1, str, ft_strlen(str));
-}
-
 #include <stdio.h>
 #include <string.h>
+
+#include "../ex01/ft_putstr.c"
+
 int	main()
 {
 	// TEST_1

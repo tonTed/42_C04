@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ex02.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tblanco <tblanco@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 15:08:32 by tblanco           #+#    #+#             */
-/*   Updated: 2021/02/17 06:55:40 by tblanco          ###   ########.fr       */
+/*   Updated: 2021/02/22 10:13:11 by tblanco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,33 +19,10 @@
 ** 		ft_putnbr(42) affiche "42"
 */
 
-#include <unistd.h>
-
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
-
-void ft_putnbr(int nb)
-{
-	long nb_long;
-
-	nb_long = nb;	
-	if(nb_long < 0)
-	{
-		ft_putchar('-');
-		nb_long = -nb_long;
-	}
-	if (nb_long > 9)
-	{
-		ft_putnbr(nb_long / 10);
-		ft_putnbr(nb_long % 10);
-	}
-	else
-		ft_putchar(nb + '0');
-}
-
 #include <limits.h>
+
+#include "../ex02/ft_putnbr.c"
+
 int main()
 {
 	ft_putnbr(42);
